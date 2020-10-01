@@ -6,7 +6,7 @@ using ToDoList.Model;
 
 namespace ToDoList.Repository
 {
-    class LearningThingRepository: ILearningRepository
+    public class LearningThingRepository: ILearningRepository
     {
         private List<LearningThing> context;
 
