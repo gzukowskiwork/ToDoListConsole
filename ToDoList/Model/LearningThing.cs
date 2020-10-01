@@ -26,5 +26,10 @@ namespace ToDoList.Model
             Advanced = 0;
             IsDone = false;
         }
+
+        public override string ToString()
+        {
+            return Id + " " + Subject + " " + Description;
+        }
     }
 }

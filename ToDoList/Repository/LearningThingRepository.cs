@@ -31,9 +31,9 @@ namespace ToDoList.Repository
             return context.ToList();
         }
 
-        public LearningThing GetLearningThingByCategoryDescription(string description)
+        public IEnumerable<LearningThing> GetLearningThingByCategoryDescription(string description)
         {
-            return context.Find(x => x.Description.Equals(description));
+            return context.FindAll(x => x.Category.Description.Equals(description));
         }
 
         public LearningThing GetLearningThingById(int id)
@@ -41,11 +41,17 @@ namespace ToDoList.Repository
             return context.Find(x => x.Id.Equals(id));
         }
 
-        public void UpdateLearningThing(LearningThing learningThing)
+        public void UpdateLearningThing(LearningThing newLearningThing, int idToUpdate)
         {
-            LearningThing learningThingToUpdate = context.Find(x => x.Id.Equals(learningThing.Id));
-            learningThingToUpdate = learningThing;
-            context.Add(learningThingToUpdate);
+            var obj = context.FirstOrDefault(x => x.Id.Equals(idToUpdate));
+            if (obj != null)
+            {
+                obj.Advanced = newLearningThing.Advanced;
+                obj.Category = newLearningThing.Category;
+                obj.Subject = newLearningThing.Subject;
+                obj.Description = newLearningThing.Description;
+            }
+            
         }
     }
 }

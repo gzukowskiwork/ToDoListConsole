@@ -9,9 +9,9 @@ namespace ToDoList.Repository
     {
         IEnumerable<LearningThing> GetAllLearningThings();
         LearningThing GetLearningThingById(int id);
-        LearningThing GetLearningThingByCategoryDescription(string description);
+        IEnumerable<LearningThing> GetLearningThingByCategoryDescription(string description);
         void CreateLearningThing(LearningThing learningThing);
-        void UpdateLearningThing(LearningThing learningThing);
+        void UpdateLearningThing(LearningThing learningThing, int id);
         void DeleteLearningThing(int id);
     }
 }
